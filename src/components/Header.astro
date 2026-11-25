@@ -1,0 +1,38 @@
+---
+const navItems = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Trabajos", href: "#trabajos" },
+  { label: "Cómo trabajamos", href: "#proceso" },
+  { label: "Opiniones", href: "#opiniones" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <a href="#inicio" class="text-lg font-semibold tracking-tight text-neutral-900">
+      Roma Amoblamiento <span class="text-xs font-normal text-neutral-400">[LOGO S1]</span>
+    </a>
+
+    <nav aria-label="Navegación principal" class="hidden gap-6 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href="#contacto"
+      class="rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"
+    >
+      Consultar
+    </a>
+  </div>
+</header>

@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Roma Amoblamiento | Muebles a medida en San Juan [A CONFIRMAR]",
+  description = "Fabricación de muebles a medida en San Juan: cocinas, placares y diseños personalizados por Roma Amoblamiento. [A CONFIRMAR]",
+  canonicalUrl,
+} = Astro.props;
+
+const resolvedCanonical =
+  canonicalUrl ??
+  (Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined);
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content={Astro.generator} />
+    {resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
+
+    <!-- Open Graph base para vista previa en WhatsApp y redes -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {resolvedCanonical && <meta property="og:url" content={resolvedCanonical} />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-neutral-50 text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+    <slot />
+  </body>
+</html>
