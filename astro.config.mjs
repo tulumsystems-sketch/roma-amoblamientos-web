@@ -4,5 +4,8 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://romaamoblamiento.com.ar",
-  integrations: [tailwindcss(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [sitemap()],
 });
